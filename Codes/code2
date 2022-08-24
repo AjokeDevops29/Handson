@@ -1,0 +1,37 @@
+#!/bin/bash
+read -p "Enter number1: " x
+read -p "Enter number2: " y
+if  [[ $x ==  [[:digit:]]  &&  $y == [[:digit:]] ]]
+then
+        echo =========================================
+else
+        echo please provide a number
+        exit 1
+fi
+echo "Choose from (1-4) option for the following operations"
+echo 1. multiplication
+echo 2. addition
+echo 3. division
+echo 4. substraction
+read -p "Enter your option (1-4): " b
+if [[ $x -ge 0 && $y -ge 0 ]]
+then
+        if [[ $b -eq 1 ]]
+        then
+                echo "The multiplication of $x and $y is: $((x*y))"
+        elif [[ $b -eq 2 ]]
+        then
+                echo "The addition of $x and $y is: $((x+y))"
+        elif [[ $b -eq 3 ]]
+        then
+                echo "The division of $x and $y is: $(bc<<< "scale=4; $x/$y")"
+        elif [[ $b -eq 4 ]]
+        then
+                echo "The substraction of $x and $y is: $((x-y))"
+        else
+                echo invalid input
+        fi
+else
+        echo invalid input
+        exit 1
+fi
